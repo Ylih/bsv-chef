@@ -26,9 +26,12 @@ def test_no_recipe_found(sut, diet, optimal, expected):
     assert res == expected
 
 @pytest.mark.unit
-@pytest.mark.parametrize('readiness, diet, optimal, expected',[(SUFFICIENT_RECIPES, "", True, "Pancake"), (SUFFICIENT_RECIPES, "", False, "Pancake"),
-                        (SUFFICIENT_RECIPES, "vegetarian", False, "Pancake"),
-                        (SUFFICIENT_RECIPES, "vegetarian", True, "Pancake")])
+@pytest.mark.parametrize('readiness, diet, optimal, expected',
+    [(SUFFICIENT_RECIPES, "", True, "Pancake"),
+    (SUFFICIENT_RECIPES, "", False, "Pancake"),
+    (SUFFICIENT_RECIPES, "vegetarian", True, "Pancake"),
+    (SUFFICIENT_RECIPES, "vegetarian", False, "Pancake")
+])
 def test_recipe_found(sut, diet, optimal, expected):
     res = sut.get_recipe(diet, optimal)
     assert res == expected
